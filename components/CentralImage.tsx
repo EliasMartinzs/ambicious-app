@@ -8,7 +8,7 @@ export default function CentralImage() {
   const { resolvedTheme } = useTheme();
   let src;
 
-  const themeStorage = localStorage.getItem("theme");
+  const themeStorage = localStorage.getItem("theme") || null;
 
   switch (themeStorage) {
     case "arcade":

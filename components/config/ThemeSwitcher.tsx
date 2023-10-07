@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import Link from "next/link";
+
 import { themes } from "@/constants";
 import { cn } from "@/lib/utils";
 
