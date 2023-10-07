@@ -32,7 +32,7 @@ export default function CentralImage() {
   }
 
   return (
-    <section className="w-full h-[500px] relative overflow-hidden">
+    <section className="w-full h-60 md:h-72 lg:h-80 2xl:h-96 relative overflow-hidden">
       <Image
         src={src}
         alt="mystical"

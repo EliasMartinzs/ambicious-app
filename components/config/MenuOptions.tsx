@@ -18,7 +18,7 @@ export default function MenuOptions() {
       </SheetTrigger>
       <SheetContent className="bg-[#191a19] border-l border-primary-500">
         <SheetHeader>
-          <SheetTitle className="text-center text-xl border-b border-primary-500/40 pb-2">
+          <SheetTitle className="text-center text-3xl border-b border-primary-500/40 pb-2">
             Ambicious
           </SheetTitle>
           <SheetDescription className="gap-y-5 flex-start flex-col">
