@@ -14,7 +14,6 @@ import {
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   useEffect(() => {
     setMounted(true);
