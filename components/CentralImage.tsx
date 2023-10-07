@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import ThemeSwitch from "@/components/config/ThemeSwitcher";
+import MenuOptions from "./config/MenuOptions";
 
 export default function CentralImage() {
   const { resolvedTheme } = useTheme();
@@ -37,12 +38,11 @@ export default function CentralImage() {
         alt="mystical"
         className="object-cover object-center saturate-200"
         fill
-        // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         priority
       />
-
-      <div className="absolute inset-0 z-[999]">
-        <ThemeSwitch />
+      <div className="absolute inset-y-0 right-0 m-5">
+        <MenuOptions />
       </div>
     </section>
   );

@@ -1,1 +1,9 @@
-export default function page() {}
+import CentralImage from "@/components/CentralImage";
+
+export default function page() {
+  return (
+    <main>
+      <CentralImage />
+    </main>
+  );
+}
