@@ -10,8 +10,14 @@ export default function page() {
       <CentralImage />
       <Name size="xxl" className="font-bold py-5" />
       <Separator />
-      <Clock />
-      <Weeks />
+      <section className="flex flex-row">
+        <div className="w-1/4 bg-red-500 h-96">
+          <Clock />
+        </div>
+        <div className="w-3/4">
+          <Weeks />
+        </div>
+      </section>
     </main>
   );
 }

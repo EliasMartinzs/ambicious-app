@@ -32,7 +32,7 @@ export default function Clock() {
   }, [currentMinute]);
 
   return (
-    <div className="flex flex-row clock max-w-[128px] paddings">
+    <div className="flex flex-row clock paddings">
       <FlipMove typeName="div" enterAnimation="accordionVertical">
         <div
           key={currentHours}
