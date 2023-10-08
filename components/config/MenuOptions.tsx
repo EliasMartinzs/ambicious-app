@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { SlidersHorizontal } from "lucide-react";
 import ThemeSwitch from "./ThemeSwitcher";
+import { User } from "../Shared/User";
 
 export default function MenuOptions() {
   return (
@@ -21,7 +22,12 @@ export default function MenuOptions() {
             Ambicious
           </SheetTitle>
           <SheetDescription className="gap-y-5 flex-start flex-col">
-            {/* <Users /> */}
+            <User
+              size="wFull"
+              variant="start"
+              sizeText="default"
+              className="py-5"
+            />
             <ThemeSwitch />
           </SheetDescription>
         </SheetHeader>

@@ -2,6 +2,13 @@ import "../globals.css";
 import type { Metadata } from "next";
 import Providers from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["italic", "normal"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +25,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <Providers>
-            <main>{children}</main>
+            <main className={montserrat.className}>{children}</main>
           </Providers>
         </body>
       </html>
