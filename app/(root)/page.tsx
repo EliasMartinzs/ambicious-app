@@ -1,8 +1,8 @@
-import CentralImage from "@/components/CentralImage";
-import Clock from "@/components/Shared/Clock";
-import Separator from "@/components/Shared/Separator";
-import Weeks from "@/components/Weeks";
-import { Name } from "@/components/config/Name";
+import CentralImage from '@/components/CentralImage';
+import Clock from '@/components/Shared/Clock';
+import Separator from '@/components/Shared/Separator';
+import Weeks from '@/components/Weeks';
+import { Name } from '@/components/config/Name';
 
 export default function page() {
   return (
@@ -10,11 +10,11 @@ export default function page() {
       <CentralImage />
       <Name size="xxl" className="font-bold py-5" />
       <Separator />
-      <section className="flex flex-row">
-        <div className="w-1/4 bg-red-500 h-96">
+      <section className="grid grid-cols-1 md:grid-cols-12">
+        <div className="clock-grid">
           <Clock />
         </div>
-        <div className="w-3/4">
+        <div className="weeks-grid">
           <Weeks />
         </div>
       </section>

@@ -1,12 +1,13 @@
-import { ClerkProvider } from "@clerk/nextjs";
-import "../globals.css";
-import { Inter } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs';
+import '../globals.css';
+import { Inter } from 'next/font/google';
+import { ReduxProvider } from '@/redux/ReduxProvider';
 
 export const metadata = {
-  title: "Next.js 13 with Clerk",
+  title: 'Next.js 13 with Clerk',
 };
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -14,10 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <ReduxProvider>
+      <ClerkProvider>
+        <html lang="en">
+          <body>{children}</body>
+        </html>
+      </ClerkProvider>
+    </ReduxProvider>
   );
 }

@@ -1,21 +1,12 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import FlipMove from "react-flip-move";
+'use client';
+import { day } from '@/constants';
+import React, { useState, useEffect } from 'react';
+import FlipMove from 'react-flip-move';
 
 export default function Clock() {
   const [currentMinute, setCurrentMinute] = useState(new Date().getMinutes());
   const [currentHours, setCurrentHours] = useState(new Date().getHours());
   const [currentDay, setCurrentDay] = useState(new Date().getDay());
-
-  const day = [
-    "Domingo",
-    "Segunda-Feira",
-    "Terça-Feira",
-    "Quarta-Feira",
-    "Quinta-Feira",
-    "Sexta-Feira",
-    "Sábado",
-  ];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -32,7 +23,7 @@ export default function Clock() {
   }, [currentMinute]);
 
   return (
-    <div className="flex flex-row clock paddings">
+    <div className="flex flex-row clock mt-[25px]">
       <FlipMove typeName="div" enterAnimation="accordionVertical">
         <div
           key={currentHours}
