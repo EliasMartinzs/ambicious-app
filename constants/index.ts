@@ -16,4 +16,25 @@ export const day = [
   'Sábado',
 ] as const;
 
-export const weekly = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
+export const weekly = [
+  {
+    name: 'segunda',
+    title: 'Segunda',
+  },
+  {
+    name: 'terca',
+    title: 'Terça',
+  },
+  {
+    name: 'quarta',
+    title: 'Quarta',
+  },
+  {
+    name: 'quinta',
+    title: 'Quinta',
+  },
+  {
+    name: 'sexta',
+    title: 'Sexta',
+  },
+];

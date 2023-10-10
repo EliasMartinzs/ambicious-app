@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Providers from './providers';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Montserrat } from 'next/font/google';
-import { ReduxProvider } from '@/redux/ReduxProvider';
+import { ReduxProvider } from './ReduxProvider';
 
 const montserrat = Montserrat({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],

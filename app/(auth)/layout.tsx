@@ -1,7 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import '../globals.css';
 import { Inter } from 'next/font/google';
-import { ReduxProvider } from '@/redux/ReduxProvider';
+import { ReduxProvider } from '../(root)/ReduxProvider';
 
 export const metadata = {
   title: 'Next.js 13 with Clerk',

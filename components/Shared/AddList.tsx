@@ -22,9 +22,9 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/form';
-import { useDispatch, useSelector } from '@/redux/store';
-import { addTask } from '@/redux/slices/task/task.slice';
-import { selectorTask } from '@/redux/slices/selector';
+import { useDispatch } from '@/redux/store';
+import uniqid from 'uniqid';
+import { addWeek } from '@/redux/slices/weeks/weeks.slice';
 
 const taskSchema = z.object({
   task: z
@@ -35,7 +35,11 @@ const taskSchema = z.object({
     .max(50),
 });
 
-export default function AddList() {
+type DayCardProps = {
+  dayOfWeek: string;
+};
+
+export default function AddList({ dayOfWeek }: DayCardProps) {
   const dispatch = useDispatch();
   const form = useForm<z.infer<typeof taskSchema>>({
     resolver: zodResolver(taskSchema),
@@ -45,14 +49,17 @@ export default function AddList() {
   });
 
   const sumbitTask = (values: z.infer<typeof taskSchema>) => {
-    dispatch(addTask(values));
+    dispatch(addWeek({ day: dayOfWeek, values, id: uniqid() }));
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default" className="hover:bg-primary-300">
-          <Plus /> Novo
+        <Button
+          variant="default"
+          className="hover:bg-primary-300/50 p-0 w-5 h-5"
+        >
+          <Plus />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] border-none shadow-2xl">
@@ -72,7 +79,7 @@ export default function AddList() {
                 <FormItem>
                   <FormLabel>Tarefas</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="Tarefa" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -85,19 +92,3 @@ export default function AddList() {
     </Dialog>
   );
 }
-
-// <div className="grid gap-4 py-4">
-// <div className="grid grid-cols-4 items-center gap-4">
-//   <Label htmlFor="tarefas" className="text-right">
-//     Tarefas
-//   </Label>
-//   <Input
-//     id="tarefas"
-//     className="col-span-3"
-//     value={task}
-//     onChange={e => {
-//       setTask(e.target.value);
-//     }}
-//   />
-// </div>
-// </div>

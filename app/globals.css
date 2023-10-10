@@ -40,7 +40,7 @@
 }
 
 .paddings {
-  @apply px-2 md:px-5 lg:px-14 2xl:px-20;
+  @apply px-2 md:px-5 lg:px-10 xl:px-14 2xl:px-20;
 }
 
 .clock-grid {

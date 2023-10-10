@@ -1,15 +1,24 @@
+import { TaskType } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 type InitialState = {
-  task: string[];
+  allTask: TaskType[];
 };
 
 const initialState: InitialState = {
-  task: [],
+  allTask: [],
 };
 
-const newTask = (task: any, taskToAdd: any) => {
-  return (task = taskToAdd);
+const newTask = (task: TaskType[], taskToAdd: TaskType) => {
+  const hasTask = task.find(item => item.id === taskToAdd.id);
+
+  if (hasTask) {
+    return (task = task.map(item =>
+      item.id === taskToAdd.id ? { ...item, taskToAdd } : item
+    ));
+  }
+
+  return [...task, { ...taskToAdd }];
 };
 
 export const Task = createSlice({
@@ -17,7 +26,7 @@ export const Task = createSlice({
   initialState: initialState,
   reducers: {
     addTask: (state, actions) => {
-      return void (state.task = newTask(state.task, actions.payload));
+      return void (state.allTask = newTask(state.allTask, actions.payload));
     },
   },
 });

@@ -5,11 +5,10 @@ import {
   useDispatch as useReduxDispatch,
   type TypedUseSelectorHook,
 } from 'react-redux';
-
-import { reducer } from './rootReducer';
+import { rootReducer } from './rootReducer';
 
 export const store = configureStore({
-  reducer: reducer,
+  reducer: rootReducer,
 });
 
 export type ReduxState = ReturnType<typeof store.getState>;
