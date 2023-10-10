@@ -4,14 +4,6 @@ type initialState = {
   [key: string]: string[];
 };
 
-type DailyTask = {
-  day: string;
-  values: {
-    task: string;
-  };
-  id: string;
-};
-
 const initialState: initialState = {
   Segunda: [],
   Terça: [],
@@ -20,23 +12,45 @@ const initialState: initialState = {
   Sexta: [],
 };
 
-const addDatyToWeek = (state: string[], dailyTask: DailyTask) => {
-  const hasTask = state.find((task: any) => task?.id === dailyTask.id);
+const addTaskToDay = (
+  state: string[],
+  addTask: {
+    day: string;
+    values: {
+      task: string;
+    };
+    id: string;
+  }
+) => {
+  const hasTask = state.find((task: any) => task?.id === addTask.id);
 
   if (hasTask) {
     return (state = state.map((task: any) =>
-      task.id === dailyTask.id ? { ...task, dailyTask } : task
+      task.id === addTask.id ? { ...task, addTask } : task
     ));
   }
 
-  return [...state, dailyTask];
+  return [...state, addTask];
+};
+
+const removeTaskToDay = (
+  state: any,
+  removeTask: { day: string; values: { task: string }; id: string }
+) => {
+  const hasTask = state.find((item: any) => item.id);
+
+  if (hasTask) {
+    return (state = state.filter((item: any) => item.id !== removeTask.id));
+  }
+
+  return [...state, removeTask];
 };
 
 const Week = createSlice({
   name: 'week',
   initialState: initialState,
   reducers: {
-    addWeek: (
+    addTask: (
       state,
       action: PayloadAction<{
         day: string;
@@ -45,10 +59,21 @@ const Week = createSlice({
       }>
     ) => {
       const { day } = action.payload;
-      return void (state[day] = addDatyToWeek(state[day], action.payload));
+      return void (state[day] = addTaskToDay(state[day], action.payload));
+    },
+    removeTask: (
+      state,
+      action: PayloadAction<{
+        day: string;
+        items: { day: string; values: { task: string }; id: string };
+      }>
+    ) => {
+      const { day, items } = action.payload;
+
+      return void (state[day] = removeTaskToDay(state[day], items));
     },
   },
 });
 
-export const { addWeek } = Week.actions;
+export const { addTask, removeTask } = Week.actions;
 export const WeekReducer = Week.reducer;

@@ -24,7 +24,9 @@ import {
 } from '../ui/form';
 import { useDispatch } from '@/redux/store';
 import uniqid from 'uniqid';
-import { addWeek } from '@/redux/slices/weeks/weeks.slice';
+import { addTask } from '@/redux/slices/weeks/weeks.slice';
+import { updateUser } from '@/lib/actions/user.actions';
+import { useUser } from '@clerk/nextjs';
 
 const taskSchema = z.object({
   task: z
@@ -40,6 +42,8 @@ type DayCardProps = {
 };
 
 export default function AddList({ dayOfWeek }: DayCardProps) {
+  const userAuth = useUser();
+  const { user } = userAuth;
   const dispatch = useDispatch();
   const form = useForm<z.infer<typeof taskSchema>>({
     resolver: zodResolver(taskSchema),
@@ -48,8 +52,14 @@ export default function AddList({ dayOfWeek }: DayCardProps) {
     },
   });
 
-  const sumbitTask = (values: z.infer<typeof taskSchema>) => {
-    dispatch(addWeek({ day: dayOfWeek, values, id: uniqid() }));
+  const sumbitTask = async (values: z.infer<typeof taskSchema>) => {
+    dispatch(addTask({ day: dayOfWeek, values, id: uniqid() }));
+
+    await updateUser({
+      userId: user?.id || '',
+      name: user?.fullName || '',
+      task: values.task,
+    });
   };
 
   return (
