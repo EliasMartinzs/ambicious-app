@@ -25,7 +25,7 @@ import {
 import { useDispatch } from '@/redux/store';
 import uniqid from 'uniqid';
 import { addTask } from '@/redux/slices/weeks/weeks.slice';
-import { updateUser } from '@/lib/actions/user.actions';
+
 import { useUser } from '@clerk/nextjs';
 
 const taskSchema = z.object({
@@ -54,12 +54,6 @@ export default function AddList({ dayOfWeek }: DayCardProps) {
 
   const sumbitTask = async (values: z.infer<typeof taskSchema>) => {
     dispatch(addTask({ day: dayOfWeek, values, id: uniqid() }));
-
-    await updateUser({
-      userId: user?.id || '',
-      name: user?.fullName || '',
-      task: values.task,
-    });
   };
 
   return (

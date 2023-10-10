@@ -1,33 +1,33 @@
-"use client";
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import ThemeSwitch from "@/components/config/ThemeSwitcher";
-import MenuOptions from "./config/MenuOptions";
+'use client';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
+import ThemeSwitch from '@/components/config/ThemeSwitcher';
+import MenuOptions from './config/MenuOptions';
 
 export default function CentralImage() {
   const { resolvedTheme } = useTheme();
   let src;
 
-  const themeStorage = localStorage.getItem("theme") || null;
+  const themeStorage = localStorage.getItem('theme');
 
   switch (themeStorage) {
-    case "arcade":
-      src = "/themes/arcade.webp";
+    case 'arcade':
+      src = '/themes/arcade.webp';
       break;
-    case "billboard":
-      src = "/themes/billboard.webp";
+    case 'billboard':
+      src = '/themes/billboard.webp';
       break;
-    case "campfire":
-      src = "/themes/campfire.webp";
+    case 'campfire':
+      src = '/themes/campfire.webp';
       break;
-    case "mystical":
-      src = "/themes/mystical.webp";
+    case 'mystical':
+      src = '/themes/mystical.webp';
       break;
-    case "summer":
-      src = "/themes/summer.webp";
+    case 'summer':
+      src = '/themes/summer.webp';
       break;
     default:
-      src = "/themes/arcade.webp";
+      src = '/themes/arcade.webp';
       break;
   }
 
