@@ -5,12 +5,12 @@ import ThemeSwitch from '@/components/config/ThemeSwitcher';
 import MenuOptions from './config/MenuOptions';
 
 export default function CentralImage() {
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme, theme } = useTheme();
   let src;
 
-  const themeStorage = localStorage.getItem('theme');
+  // const themeStorage = localStorage.getItem('theme');
 
-  switch (themeStorage) {
+  switch (theme) {
     case 'arcade':
       src = '/themes/arcade.webp';
       break;
